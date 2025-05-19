@@ -1,4 +1,6 @@
-<div>
+<div data-nested-fields-target="wrapper" data-controller="nested-fields">
+    <%= form.hidden_field :_destroy, data: { nested_fields_target: "destroyField" } %>
+
     <%= form.label :name %>
     <%= form.text_field :name %>
 
@@ -10,4 +12,6 @@
 
     <%= form.label :notes %>
     <%= form.text_field :notes %>
+
+    <%= button_tag "Remove ingredient", type: :button, data: {action: "nested-fields#remove"} %>
 </div>

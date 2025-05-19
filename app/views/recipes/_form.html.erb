@@ -43,7 +43,7 @@
 
     <div data-nested-fields-target="fields"></div>
     <div>
-        <%= button_tag "Add ingredient", type: :button, data: {action: "nested-fields#append"} %>
+        <%= button_tag "Add ingredient", type: :button, data: { action: "nested-fields#append" } %>
 
         <template data-nested-fields-target="template">
             <%= fields_for "recipe[recipe_ingredients_attributes][]", RecipeIngredient.new, index: "__INDEX__" do |recipe_ingredients_form| %>

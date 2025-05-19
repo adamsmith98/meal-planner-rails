@@ -45,6 +45,6 @@ class RecipesController < ApplicationController
   private
   def recipe_params
     params.expect(recipe: [ :name, :instructions, :prep_time, :cooking_time, :serves, :is_gluten_free, :is_dairy_free, :is_vegetarian, :is_vegan,
-      recipe_ingredients_attributes: [ [ :quantity, :unit, :name, :notes, :id ] ] ])
+      recipe_ingredients_attributes: [ [ :_destroy, :quantity, :unit, :name, :notes, :id ] ] ])
   end
 end
