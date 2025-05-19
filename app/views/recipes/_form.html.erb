@@ -1,0 +1,63 @@
+<%= form_with model: recipe, data: {controller: "nested-fields"} do |form| %>
+    <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div>
+        <%= form.label :prep_time %>
+        <%= form.text_field :prep_time %>
+    </div>
+
+    <div>
+        <%= form.label :cooking_time %>
+        <%= form.text_field :cooking_time %>
+    </div>
+
+    <div>
+        <%= form.label :serves %>
+        <%= form.text_field :serves %>
+    </div>
+
+    <div>
+        <%= form.label :is_gluten_free %>
+        <%= form.checkbox :is_gluten_free %>
+    </div>
+
+    <div>
+        <%= form.label :is_dairy_free %>
+        <%= form.checkbox :is_dairy_free %>
+    </div>
+
+    <div>
+        <%= form.label :is_vegetarian %>
+        <%= form.checkbox :is_vegetarian %>
+    </div>
+
+    <div>
+        <%= form.label :is_vegan %>
+        <%= form.checkbox :is_vegan %>
+    </div>
+
+    <%= yield form %>
+
+    <div data-nested-fields-target="fields"></div>
+    <div>
+        <%= button_tag "Add ingredient", type: :button, data: {action: "nested-fields#append"} %>
+
+        <template data-nested-fields-target="template">
+            <%= fields_for "recipe[recipe_ingredients_attributes][]", RecipeIngredient.new, index: "__INDEX__" do |recipe_ingredients_form| %>
+                <%= render "recipe_ingredient_fields", form: recipe_ingredients_form %>
+            <% end %>
+        </template>
+    </div>
+
+    <div>
+        <%= form.label :instructions %>
+        <%= form.text_area :instructions %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>

@@ -1,0 +1,6 @@
+<%= link_to "Back", recipe_path(@recipe) %>
+<%= render "form", recipe: @recipe do |form| %>
+    <%= form.fields_for :recipe_ingredients do |recipe_ingredients_form| %>
+        <%= render "recipe_ingredient_fields", form: recipe_ingredients_form %>
+    <% end %>
+<% end %>
