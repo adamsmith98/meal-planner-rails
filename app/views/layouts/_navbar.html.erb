@@ -1,5 +1,6 @@
 <% if authenticated? %>
     <%= button_to "Sign out", session_path, method: :delete %>
+    <%= link_to "Shopping list", shopping_list_items_path %>
 <% else %>
     <%= button_to "Sign in", new_session_path %>
 <% end %>

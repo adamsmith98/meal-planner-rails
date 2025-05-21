@@ -14,6 +14,13 @@ class ShoppingListItemsController < ApplicationController
     redirect_back fallback_location: root_path
   end
 
+  def destroy
+    @shopping_list_item = ShoppingListItem.find(params[:id])
+
+    @shopping_list_item.destroy
+    redirect_to shopping_list_items_path
+  end
+
   private
   def shopping_list_item_params
     params.expect(shopping_list_item: [ :user_id, :recipe_ingredient_id ])
