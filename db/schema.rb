@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_20_101336) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_20_171307) do
   create_table "recipe_ingredients", force: :cascade do |t|
     t.integer "recipe_id", null: false
     t.string "quantity"
@@ -47,6 +47,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_20_101336) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "shopping_list_items", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "recipe_ingredient_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "quantity"
+    t.index ["recipe_ingredient_id"], name: "index_shopping_list_items_on_recipe_ingredient_id"
+    t.index ["user_id"], name: "index_shopping_list_items_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email_address", null: false
     t.string "password_digest", null: false
@@ -58,4 +68,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_20_101336) do
   add_foreign_key "recipe_ingredients", "recipes"
   add_foreign_key "recipes", "users"
   add_foreign_key "sessions", "users"
+  add_foreign_key "shopping_list_items", "recipe_ingredients"
+  add_foreign_key "shopping_list_items", "users"
 end

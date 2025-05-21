@@ -1,13 +1,20 @@
-<%= render "navbar" %>
+<%= render "layouts/navbar" %>
 
 <%= link_to "Back", root_path %>
+
+<% flash.each do |type, msg| %>
+    <div data-controller="remove-flash" data-remove-flash-target="flash">
+        <%= msg %>
+    </div> 
+<% end %>
 
 <h1><%= @recipe.name %></h1>
 <p>Prep time: <%= @recipe.prep_time %></p>
 <p>Cooking time: <%= @recipe.cooking_time %></p>
 <p>Serves: <%= @recipe.serves %></p>
 <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
-    <p><%= recipe_ingredient.name %>, <%= recipe_ingredient.quantity %> <%= recipe_ingredient.unit %><%= recipe_ingredient.notes %></p>
+    <p><%= recipe_ingredient.name %>, <%= recipe_ingredient.quantity %> <%= recipe_ingredient.unit %> <%= recipe_ingredient.notes %></p>
+    <%= button_to "Add to shopping list", shopping_list_items_path, method: :post, params: { shopping_list_item: { user_id: Current.user.id, recipe_ingredient_id: recipe_ingredient.id } } %>
 <% end %>
 <p><%= @recipe.instructions %></p>
 
