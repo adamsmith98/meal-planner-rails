@@ -4,7 +4,7 @@ class ShoppingListItemsController < ApplicationController
   end
 
   def create
-    @shopping_list_item = ShoppingListItem.new(shopping_list_item_params)
+    @shopping_list_item = Current.user.shopping_list_items.new(shopping_list_item_params)
 
     if @shopping_list_item.save
       flash[:notice] = "Successfully added to shopping list"
@@ -23,6 +23,6 @@ class ShoppingListItemsController < ApplicationController
 
   private
   def shopping_list_item_params
-    params.expect(shopping_list_item: [ :user_id, :recipe_ingredient_id ])
+    params.expect(shopping_list_item: [ :recipe_ingredient_id ])
   end
 end
