@@ -1,15 +1,15 @@
-<%= render "layouts/navbar" %>
-
-<h1>Recipes</h1>
-
-<ul>
+<div class="row row-cols-4 gy-3 my-3">
     <% @recipes.each do |recipe| %>
-        <li>
-            <%= link_to recipe.name, recipe %>
-        </li>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <p><%= link_to recipe.name, recipe %></p>
+                </div>
+            </div>
+        </div>
     <% end %>
-</ul>
+</div>
 
-<div>
-    <%= link_to "New recipe", new_recipe_path %>
+<div class="my-3">
+    <%= link_to "New recipe", new_recipe_path, class: "btn btn-primary text-white" %>
 </div>  

@@ -1,6 +1,19 @@
-<% if authenticated? %>
-    <%= button_to "Sign out", session_path, method: :delete %>
-    <%= link_to "Shopping list", shopping_list_items_path %>
-<% else %>
-    <%= button_to "Sign in", new_session_path %>
-<% end %>
+<nav class="navbar navbar-expand-lg bg-primary shadow">
+    <div class="container">
+        <%= link_to root_path do %>
+            <%= image_tag "icon.png", class: "navbar-brand p-0", alt: "Recipes", style: "height: 50px; width: auto;" %>
+        <% end %>
+        <div class="d-inline-flex align-items-center">
+            <% if authenticated? %>
+                <div class="nav-item">
+                    <%= link_to "Shopping list", shopping_list_items_path, class: "nav-link me-3 text-white" %>
+                </div>
+                <div class="nav-item">
+                    <%= button_to "Sign out", session_path, method: :delete, class: "btn btn-secondary text-white" %>
+                </div>
+            <% else %>
+                <%= button_to "Sign in", new_session_path, class: "btn btn-secondary text-white" %>
+            <% end %>
+        </div>
+    </div>
+</nav>
