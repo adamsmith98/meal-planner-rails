@@ -1,4 +1,9 @@
-$primary: #A3B18A;
+$primary: #A3B49F;
 $secondary: #D9822B;
+$input-placeholder-color: white;
 
 @import "bootstrap";
+
+input::placeholder {
+    opacity: 0.5 !important;
+}

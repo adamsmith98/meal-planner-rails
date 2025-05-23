@@ -1,15 +1,24 @@
-<div class="my-3">
-    <%= link_to "New recipe", new_recipe_path, class: "btn btn-primary text-white" %>
-</div>  
-
-<div class="row row-cols-4 gy-3">
-    <% @recipes.each do |recipe| %>
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <p><%= link_to recipe.name, recipe %></p>
-                </div>
+<div data-controller="search-recipes">
+    <div class="container">
+        <div class="row row-cols-auto my-3 align-items-center">
+            <div class="col-3">
+                <%= link_to "New recipe", new_recipe_path, class: "btn btn-primary text-white" %>
+            </div>  
+            <div class="col-4">
+                <%= search_field_tag "search", nil, placeholder: "Find a recipe", class: "form-control form-control-lg text-white", style: "background-color: #7E927B; border: none" , data: { action: "search-recipes#filter", search_recipes_target: "search" } %>
             </div>
         </div>
-    <% end %>
+    </div>
+
+    <div class="row row-cols-4 gy-3">
+        <% @recipes.each do |recipe| %>
+            <div class="col" data-search-recipes-target="recipe">
+                <div class="card">
+                    <div class="card-body">
+                        <p><%= link_to recipe.name, recipe %></p>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
 </div>
