@@ -1,7 +1,7 @@
 <%= link_to "Back", root_path %>
 
 <% flash.each do |type, msg| %>
-    <div data-controller="remove-flash" data-remove-flash-target="flash">
+    <div class="alert alert-success" data-controller="remove-flash" data-remove-flash-target="flash">
         <%= msg %>
     </div> 
 <% end %>
