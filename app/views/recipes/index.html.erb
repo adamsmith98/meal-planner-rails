@@ -1,4 +1,8 @@
-<div class="row row-cols-4 gy-3 my-3">
+<div class="my-3">
+    <%= link_to "New recipe", new_recipe_path, class: "btn btn-primary text-white" %>
+</div>  
+
+<div class="row row-cols-4 gy-3">
     <% @recipes.each do |recipe| %>
         <div class="col">
             <div class="card">
@@ -9,7 +13,3 @@
         </div>
     <% end %>
 </div>
-
-<div class="my-3">
-    <%= link_to "New recipe", new_recipe_path, class: "btn btn-primary text-white" %>
-</div>  
