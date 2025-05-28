@@ -16,6 +16,18 @@
                 <div class="card">
                     <div class="card-body">
                         <p><%= link_to recipe.name, recipe %></p>
+                        <% if recipe.is_gluten_free %>
+                            <span class="badge text-bg-light">Gluten free</span>
+                        <% end %>
+                        <% if recipe.is_dairy_free %>
+                            <span class="badge text-bg-light">Dairy free</span>
+                        <% end %>
+                        <% if recipe.is_vegetarian %>
+                            <span class="badge text-bg-light">Vegetarian</span>
+                        <% end %>
+                        <% if recipe.is_vegan %>
+                            <span class="badge text-bg-light">Vegan</span>
+                        <% end %>
                     </div>
                 </div>
             </div>

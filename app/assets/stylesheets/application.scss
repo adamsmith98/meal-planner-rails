@@ -3,6 +3,7 @@ $secondary: #D9822B;
 $input-placeholder-color: white;
 
 @import "bootstrap";
+@import "bootstrap-icons";
 
 input::placeholder {
     opacity: 0.5 !important;
